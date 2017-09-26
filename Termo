@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int main(int argc, char* argv[])
+{
+float c, temp, f, k, p;
+char scale;
+
+scanf("%f", &temp);
+
+scale = getchar();
+if ((p = getchar()) != EOF)
+{
+    scale = p;
+    if (scale == 'C')
+{
+    f = temp * 9 / 5 + 32;
+    k = temp + 273.15;
+    printf("%.2f F: \n%.2f K:", f, k);
+}
+    else if (scale == 'F')
+{
+    c = (temp - 32) * 5 / 9;
+    k = c + 273.15;
+    printf( "%.2f C: \n%.2f K:", c, k);
+}
+    else if (scale == 'K')
+{
+    c = temp - 273.15;
+    f = c * 9 / 5 + 32;
+    printf( "%.2f C: \n%.2f F:", c, f);
+}
+
+    else if (scale < 11 )
+
+{
+
+    f = temp * 9 / 5 + 32;
+    k = temp + 273.15;
+    printf("%.2f C:\n%.2f F: \n%.2f K:", temp, f, k);
+    c = (temp - 32) * 5 / 9;
+    k = c + 273.15;
+    printf("\n \n%.2f F:\n%.2f C: \n%.2f K:", temp, c, k);
+    c = temp - 273.15;
+    f = c * 9 / 5 + 32;
+    printf("\n \n%.2f K:\n%.2f C: \n%.2f F:", temp, c, f);
+}
+    else
+    printf("Incorrect scale");
+}
+
+
+
+return 0;
+}
