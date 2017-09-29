@@ -1,54 +1,71 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 
-int main(int argc, char* argv[])
-{
-float c, temp, f, k, p;
-char scale;
-
-scanf("%f", &temp);
-
-scale = getchar();
-if ((p = getchar()) != EOF)
-{
-    scale = p;
-    if (scale == 'C')
-{
-    f = temp * 9 / 5 + 32;
-    k = temp + 273.15;
-    printf("%.2f F: \n%.2f K:", f, k);
-}
-    else if (scale == 'F')
-{
-    c = (temp - 32) * 5 / 9;
-    k = c + 273.15;
-    printf( "%.2f C: \n%.2f K:", c, k);
-}
-    else if (scale == 'K')
-{
-    c = temp - 273.15;
-    f = c * 9 / 5 + 32;
-    printf( "%.2f C: \n%.2f F:", c, f);
-}
-
-    else if (scale < 11 )
-
+int main(int argc, char** argv)
 {
 
-    f = temp * 9 / 5 + 32;
-    k = temp + 273.15;
-    printf("%.2f C:\n%.2f F: \n%.2f K:", temp, f, k);
-    c = (temp - 32) * 5 / 9;
-    k = c + 273.15;
-    printf("\n \n%.2f F:\n%.2f C: \n%.2f K:", temp, c, k);
-    c = temp - 273.15;
-    f = c * 9 / 5 + 32;
-    printf("\n \n%.2f K:\n%.2f C: \n%.2f F:", temp, c, f);
-}
-    else
-    printf("Incorrect scale");
-}
+
+    float c, f, k;
+    double temp;
+    char scale;
 
 
 
-return 0;
+    if (argc == 1)
+    {
+        printf("syntax : \n\ttermo.exe t\n     or\n\ttermo.exe t c\n where t - temperature, c - scale (C, F, K)");
+
+    }
+
+    else if (argc == 3)
+    {
+        temp = atof(argv[1]);
+        scale = *argv[2];
+
+
+        if (scale == 'C' || scale == 'c')
+        {
+
+            f = temp * 9 / 5 + 32;
+            k = temp + 273.15;
+            printf("Convert %.2f C:\n%.2f F:\n%.2f K:",temp , f, k);
+        }
+
+
+        else if (scale == 'F' || scale =='f')
+        {
+
+            c = (temp - 32) * 5 / 9;
+            k = c + 273.15;
+            printf( "Convert %.2f F:\n%.2f C:\n%.2f K:",temp, c, k);
+        }
+
+        else if (scale == 'K' || scale == 'k')
+        {
+
+            c = temp - 273.15;
+            f = c * 9 / 5 + 32;
+            printf( "Convert %.2f K:\n%.2f C:\n%.2f F:", temp, c, f);
+        }
+        else
+        printf("Incorrect scale");
+
+    }
+
+    else if (argc==2)
+    {
+        temp = atof(argv[1]);
+
+        f = temp * 9 / 5 + 32;
+        k = temp + 273.15;
+        printf("Convert %.2f\n%.2f C:\n%.2f F:\n%.2f K:", temp, temp, f, k);
+        c = (temp - 32) * 5 / 9;
+        k = c + 273.15;
+        printf("\n\n%.2f F:\n%.2f C:\n%.2f K:", temp, c, k);
+        c = temp - 273.15;
+        f = c * 9 / 5 + 32;
+        printf("\n\n%.2f K:\n%.2f C:\n%.2f F:", temp, c, f);
+    }
+getch();
 }
